@@ -1,17 +1,20 @@
 import { User, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getAuth } from "../config/firebase";
 
 export default function LoginScreen() {
 
   const auth = getAuth();
-  onAuthStateChanged(auth, (user: User | null) => {
-    if (user) {
-      setUser(user)
-    } else {
-      setUser(user)
-    }
+  useEffect(() => {
+    onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(user)
+      }
+    })
   })
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [user, setUser] = useState(auth.currentUser);
