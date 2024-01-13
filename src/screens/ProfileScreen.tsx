@@ -8,7 +8,6 @@ export type GroupData = {
 };
 
 const groups: GroupData[] = [
-
   {
     name: "g1",
     members: ["tom", "dick", "harry"]
@@ -18,6 +17,9 @@ const groups: GroupData[] = [
     members: ["joe", "dick", "harry"]
   }
 ]
+
+
+
 export default function ProfileScreen() {
   const auth = getAuth()
 
@@ -34,7 +36,7 @@ export default function ProfileScreen() {
   const [user, setUser] = useState(auth.currentUser)
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col pt-20">
       <div className="flex">Welcome, {user?.displayName}</div>
 
       <div className="flex-auto justify-center">
@@ -43,7 +45,8 @@ export default function ProfileScreen() {
           <div className="w-2/4 bg-cyan-900">
             {groups.map((group: GroupData) =>
               <Group group_data={group} />
-            )}
+            )
+            }
 
           </div>
         </div>
