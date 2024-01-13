@@ -14,6 +14,9 @@ const NavBar: React.FC = () => {
         <div>
           <Link to="/dashboard" className="text-white">Dashboard</Link>
         </div>
+        <div>
+          <Link to="/creategroup" className="text-white">Group Setup</Link>
+        </div>
       </div>
     </nav>
   );

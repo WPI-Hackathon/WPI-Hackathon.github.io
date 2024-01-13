@@ -44,6 +44,20 @@ export default function SignUpScreen() {
       setDoc(doc(db, "users", user.uid), userInfo);
 
 
+      //set initial availability
+      const weekly = {
+        Sunday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        Monday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        Tuesday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        Wednesday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        Thursday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        Friday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        Saturday: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      }
+
+      setDoc(doc(db, "calendars", user.uid), weekly)
+
+
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -64,21 +78,62 @@ export default function SignUpScreen() {
     })
 
   }
+  // return (
+  //   <section>
+  //     <div>{JSON.stringify(user)}</div>
+  //     <div className="my-10">
+  //       <input type="text" placeholder="display name" onChange={event => setDisplayName(event.target.value)} />
+  //     </div>
+  //     <div className="my-10">
+  //       <input type="text" placeholder="email" onChange={event => setEmail(event.target.value)} />
+  //     </div>
+  //     <div className="my-10">
+  //       <input type="text" placeholder="password" onChange={event => setPassword(event.target.value)} />
+  //     </div>
+  //     <div className="my-20">
+  //       <button onClick={signup}>Submit</button>
+  //     </div>
+  //   </section>
+  // )
+
   return (
-    <section>
-      <div>{JSON.stringify(user)}</div>
-      <div className="my-10">
-        <input type="text" placeholder="display name" onChange={event => setDisplayName(event.target.value)} />
+    <section className="max-w-md mx-auto mt-20 p-6 rounded shadow-md">
+      {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
+      <div className="mb-4 text-center">Sign Up</div>
+      <div className="my-4">
+        <input
+          type="text"
+          placeholder="Display Name"
+          onChange={(event) => setDisplayName(event.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        />
       </div>
-      <div className="my-10">
-        <input type="text" placeholder="email" onChange={event => setEmail(event.target.value)} />
+      <div className="my-4">
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={(event) => setEmail(event.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        />
       </div>
-      <div className="my-10">
-        <input type="text" placeholder="password" onChange={event => setPassword(event.target.value)} />
+      <div className="my-4">
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(event) => setPassword(event.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        />
       </div>
-      <div className="my-20">
-        <button onClick={signup}>Submit</button>
+      <div className="my-8 text-center">
+        <button
+          onClick={signup}
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+        >
+          Submit
+        </button>
       </div>
     </section>
-  )
+  );
+
+
 }
