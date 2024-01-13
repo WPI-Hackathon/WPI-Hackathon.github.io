@@ -58,7 +58,7 @@ export default function LoginScreen() {
   return (
     <section className="max-w-md mx-auto mt-20 p-6 rounded shadow-md">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
-      <div className="mb-4 text-center">Login</div>
+      <div className="p-4 text-center">Login</div>
       <div className="my-4">
         <input
           type="text"
@@ -67,7 +67,7 @@ export default function LoginScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-4">
+      <div className="py-4">
         <input
           type="password"
           placeholder="Password"
@@ -75,7 +75,7 @@ export default function LoginScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-8 text-center">
+      <div className="py-8 text-center">
         <button
           onClick={login}
           className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
