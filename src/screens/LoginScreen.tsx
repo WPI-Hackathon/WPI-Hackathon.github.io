@@ -32,6 +32,7 @@ export default function LoginScreen() {
 
   return (
     <section>
+      <div>{JSON.stringify(user)}</div>
       <div className="my-10">
         <input type="text" placeholder="email" onChange={event => setEmail(event.target.value)} />
       </div>
