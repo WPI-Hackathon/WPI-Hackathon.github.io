@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { initSchedule } from "./helpers/initSchedule";
+import { displaySchedule } from "./helpers/displaySchedule";
 
 export default function Calendar({
     parseSchedule,
@@ -8,18 +8,34 @@ export default function Calendar({
 }) {
     const [schedule, setSchedule] =
         useState<Array<Array<number>>>(parseSchedule);
+    const [mouse, setMouse] = useState<boolean>(false)
 
     useEffect(() => {
-        console.log("INSDKFHS:DKLFHJSDKLFJHSDKLFJH")
-        console.log(schedule);
+        const saveData = setTimeout(() => {
+            console.log("Saving...")
+            console.log(schedule);
+        }, 2000)
+
+        return () => clearTimeout(saveData);
     }, [schedule]);
 
-    const test = initSchedule(schedule, setSchedule);
+    const display = displaySchedule(schedule, setSchedule, mouse);
+
+    function handleMouseDown() {
+        console.log("mouse down")
+        setMouse(true)
+        
+    }
+    
+    function handleMouseUp() {
+        console.log("mouse up")
+        setMouse(false)
+    }
 
     return (
-        <>
-            {test}
-            {schedule}
-        </>
+        <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+            {display}
+            <div>{`${schedule}`}</div>
+        </div>
     );
 }

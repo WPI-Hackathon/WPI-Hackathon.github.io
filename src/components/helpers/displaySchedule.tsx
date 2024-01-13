@@ -1,6 +1,6 @@
 import Cell from "../calendar/Cell";
 
-export function initSchedule(schedule: number[][], setSchedule: any) {
+export function displaySchedule(schedule: number[][], setSchedule: any, mouse: boolean) {
     let key = 0;
 
     return (
@@ -15,6 +15,7 @@ export function initSchedule(schedule: number[][], setSchedule: any) {
                                 setSchedule={setSchedule}
                                 cellNum={key - 1}
                                 height={schedule[0].length}
+                                mouse={mouse}
                             />
                         );
                     })}

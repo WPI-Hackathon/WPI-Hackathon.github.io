@@ -7,11 +7,13 @@ export default function Cell({
     setSchedule,
     cellNum,
     height,
+    mouse
 }: {
     schedule: number[][];
     setSchedule: any;
     cellNum: number;
     height: number;
+    mouse: boolean;
 }) {
     // TODO: Replace starting state if loading calendar
     // TODO: useEffect handling the fetching of the data from firebase
@@ -28,11 +30,20 @@ export default function Cell({
     }, [schedule]);
 
     function handleClick() {
-        console.log("handling click")
         setSchedule((prevSchedule: number[][]) => {
             const newSchedule = modifySchedule(prevSchedule, cellNum, height);
             return [...newSchedule];
         });
+    }
+
+    function handleOnMouseEnter() {
+        if(mouse) {
+            console.log("wow its working")
+            setSchedule((prevSchedule: number[][]) => {
+                const newSchedule = modifySchedule(prevSchedule, cellNum, height);
+                return [...newSchedule];
+            });
+        }
     }
 
     return (
@@ -42,6 +53,7 @@ export default function Cell({
             } w-24 h-6 border border-style:solid`}
             onClick={handleClick}
             onDragOver={handleClick}
+            onMouseEnter={handleOnMouseEnter}
         />
     );
 }
