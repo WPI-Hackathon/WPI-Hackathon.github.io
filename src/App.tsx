@@ -6,6 +6,7 @@ import SignUpScreen from './screens/SignUpScreen'
 import NavBar from './components/NavBar'
 import ProfileScreen from './screens/ProfileScreen'
 import CreateGroupScreen from './screens/CreateGroupScreen'
+import JoinGroupScreen from './screens/JoinGroupScreen'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/creategroup" element={<CreateGroupScreen />} />
         <Route path="/dashboard" element={<ProfileScreen />} />
+        <Route path="/joingroup" element={<JoinGroupScreen />} />
       </Routes>
     </>
   )
