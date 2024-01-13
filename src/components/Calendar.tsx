@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { displaySchedule } from "./helpers/displaySchedule";
-import calcArea from "./helpers/calcArea";
+import { displaySchedule } from "../helpers/displaySchedule";
+import calcArea from "../helpers/calcArea";
 
 export default function Calendar({
     parseSchedule,
@@ -17,7 +17,7 @@ export default function Calendar({
     useEffect(() => {
         const saveData = setTimeout(() => {
             console.log("Saving...");
-            console.log(schedule);
+            // TODO: Put firebase here
         }, 2000);
 
         return () => clearTimeout(saveData);

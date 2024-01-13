@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import modifySchedule from "../helpers/modifySchedule";
-import getCoords from "../helpers/getCoords";
-import inverse from "../helpers/inverse";
+import modifySchedule from "../../helpers/modifySchedule";
+import getCoords from "../../helpers/getCoords";
+import inverse from "../../helpers/inverse";
 
 export default function Cell({
     schedule,
@@ -31,6 +31,7 @@ export default function Cell({
         return schedule[x][y];
     });
    
+    const [previousVal, setPreviousValue] = useState(0)
 
     useEffect(() => {
         setActive(() => {
@@ -52,6 +53,7 @@ export default function Cell({
         // }
         if(mouse) {
             setCurrent(cellNum)
+            setPreviousValue(active)
         }
     }
 
@@ -67,6 +69,7 @@ export default function Cell({
         // }
 
         // Don't set current instead revert the number (might not even need this)
+        setActive(previousVal)
     }
 
     function handleOnMouseDown() {

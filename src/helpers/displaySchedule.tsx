@@ -1,4 +1,4 @@
-import Cell from "../calendar/Cell";
+import Cell from "../components/calendar/Cell";
 
 export function displaySchedule(
     schedule: number[][],

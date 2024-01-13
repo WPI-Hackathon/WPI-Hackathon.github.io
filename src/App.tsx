@@ -1,12 +1,11 @@
 import './App.css'
-import Calendar from './components/Calendar'
+import CalendarScreen from './screens/CalendarScreen'
 
 function App() {
-  const apiCall = [[0, 1, 1, 0], [1, 1, 0, 1]]
 
   return (
     <>
-      <Calendar parseSchedule={apiCall}/>
+      <CalendarScreen />
     </>
   )
 }
