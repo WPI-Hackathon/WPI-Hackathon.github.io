@@ -1,4 +1,5 @@
 import Day from "./Day";
+import Label from "./Label";
 
 const allDays = [
     "Sunday",
@@ -17,6 +18,8 @@ export default function DayPicker({
     selectedDays: Array<number>;
     setSelectedDays: any;
 }) {
+    
+
     return (
         <div className="flex flex-row">
             {selectedDays.map((value, index) => {
