@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import modifySchedule from "../../helpers/modifySchedule";
 import getCoords from "../../helpers/getCoords";
 import inverse from "../../helpers/inverse";
+import { act } from "react-dom/test-utils";
 
 export default function Cell({
     schedule,
@@ -12,7 +12,7 @@ export default function Cell({
     mode,
     setMode,
     setStart,
-    setCurrent
+    setCurrent,
 }: {
     schedule: number[][];
     setSchedule: any;
@@ -30,10 +30,12 @@ export default function Cell({
         const { x, y } = getCoords(height, cellNum);
         return schedule[x][y];
     });
-   
-    const [previousVal, setPreviousValue] = useState(0)
+
+    const [previousVal, setPreviousValue] = useState(0);
+
 
     useEffect(() => {
+        setPreviousValue(active);
         setActive(() => {
             const { x, y } = getCoords(height, cellNum);
             return schedule[x][y];
@@ -41,51 +43,24 @@ export default function Cell({
     }, [schedule]);
 
     function handleOnMouseEnter() {
-        // if (mouse) {
-        //     if (active !== mode) {
-        //         console.log("running");
-        //         setSchedule((prevSchedule: number[][]) => {
-        //             const { x, y } = getCoords(height, cellNum);
-        //             prevSchedule[x][y] = mode;
-        //             return [...prevSchedule];
-        //         });
-        //     }
-        // }
-        if(mouse) {
-            setCurrent(cellNum)
-            setPreviousValue(active)
+        if (mouse) {
+            setCurrent(cellNum);
         }
     }
 
     function handleOnMouseLeave() {
-        // if (mouse) {
-        //     if (mode === active) {
-        //         setSchedule((prevSchedule: number[][]) => {
-        //             const { x, y } = getCoords(height, cellNum);
-        //             prevSchedule[x][y] = inverse(mode);
-        //             return [...prevSchedule];
-        //         });
-        //     }
-        // }
-
         // Don't set current instead revert the number (might not even need this)
-        setActive(previousVal)
+        if (mouse) {
+            setActive(previousVal);
+        }
     }
 
     function handleOnMouseDown() {
-        // const inv = inverse(active);
-        // setSchedule((prevSchedule: number[][]) => {
-            //     const { x, y } = getCoords(height, cellNum);
-            //     prevSchedule[x][y] = inv;
-            //     return [...prevSchedule];
-            // });
+        console.log('mouse down')
         setMode(inverse(active));
-        setStart(cellNum)
-        setCurrent(cellNum)
-        console.log("SET CURRENT", cellNum)
+        setStart(cellNum);
+        setCurrent(cellNum);
     }
-
-    console.log("mode is now:", mode);
 
     return (
         <div

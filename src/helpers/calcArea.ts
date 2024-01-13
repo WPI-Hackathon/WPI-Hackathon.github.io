@@ -7,13 +7,15 @@ export default function calcArea(
     current: number,
     mode: number
 ) {
+    if (current === -1 || start === -1) {
+        return schedule;
+    }
+
     const { x: x1, y: y1 } = getCoords(height, start);
     const { x: x2, y: y2 } = getCoords(height, current);
 
     const max = [Math.max(x1, x2), Math.max(y1, y2)];
     const min = [Math.min(x1, x2), Math.min(y1, y2)];
-
-    console.log(max, min);
 
     for (let i = min[0]; i < max[0] + 1; i++) {
         for (let j = min[1]; j < max[1] + 1; j++) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { displaySchedule } from "../helpers/displaySchedule";
-import calcArea from "../helpers/calcArea";
+import { displaySchedule } from "../../helpers/displaySchedule";
+import calcArea from "../../helpers/calcArea";
 
 export default function Calendar({
     parseSchedule,
@@ -30,8 +30,6 @@ export default function Calendar({
         })
     }, [start, current])
 
-    console.log("CURRENT", current)
-
     const display = displaySchedule(
         schedule,
         setSchedule,
@@ -48,6 +46,8 @@ export default function Calendar({
 
     function handleMouseUp() {
         setMouse(false);
+        setCurrent(-1)
+        setStart(-1)
     }
 
     return (
