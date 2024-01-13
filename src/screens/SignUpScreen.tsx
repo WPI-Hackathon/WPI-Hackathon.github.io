@@ -1,23 +1,30 @@
-import { FirebaseError } from "firebase/app";
 import { getAuth } from "../config/firebase"
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { User, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function SignUpScreen() {
 
   const auth = getAuth();
+  onAuthStateChanged(auth, (user: User | null) => {
+    if (user) {
+      setUser(user)
+    } else {
+      setUser(user)
+    }
+  })
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [user, setUser] = useState(JSON.stringify(auth.currentUser))
+  const [user, setUser] = useState(auth.currentUser)
 
 
   const signup = () => {
     createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
       //Signed up
       const user = userCredential.user;
-      setUser(JSON.stringify(user));
-      console.log(user)
-    }).catch((error: FirebaseError) => {
+      setUser(user);
+      console.log(JSON.stringify(user))
+    }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       switch (errorCode) {
