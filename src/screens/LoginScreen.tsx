@@ -78,7 +78,8 @@ export default function LoginScreen() {
       <div className="my-8 text-center">
         <button
           onClick={login}
-          className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+          >
           Submit
         </button>
       </div>
