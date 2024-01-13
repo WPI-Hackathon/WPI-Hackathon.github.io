@@ -16,7 +16,10 @@ const NavBar: React.FC = () => {
           <Link to="/dashboard" className="text-white">Dashboard</Link>
         </div>
         <div>
-          <Link to="/creategroup" className="text-white">Group Setup</Link>
+          <Link to="/creategroup" className="text-white">Create Group</Link>
+        </div>
+        <div>
+          <Link to="/joingroup" className="text-white">Join Group</Link>
         </div>
         <div>
           <Link to="/login" className="text-white">Login</Link>
