@@ -1,10 +1,36 @@
-import { useEffect, useState } from "react";
-import { createWeek, getWeekMap } from "../../helpers/createWeek";
+import Day from "./Day";
 
-export default function DayPicker() {
-    const [selectedDays, setSelectedDays] = useState(getWeekMap());
+const allDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+];
 
-    const week = createWeek(setSelectedDays);
-
-    return <div className="flex flex-row">{week}</div>;
+export default function DayPicker({
+    selectedDays,
+    setSelectedDays,
+}: {
+    selectedDays: Array<number>;
+    setSelectedDays: any;
+}) {
+    return (
+        <div className="flex flex-row">
+            {selectedDays.map((value, index) => {
+                console.log(index);
+                return (
+                    <Day
+                        name={allDays[index]}
+                        startingActive={value}
+                        setSelectedDays={setSelectedDays}
+                        cellNum={index}
+                        key={index}
+                    />
+                );
+            })}
+        </div>
+    );
 }
