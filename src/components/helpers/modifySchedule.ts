@@ -1,4 +1,5 @@
 import getCoords from "./getCoords";
+import inverse from "./inverse";
 
 export default function modifySchedule(
     schedule: number[][],
@@ -6,6 +7,7 @@ export default function modifySchedule(
     height: number
 ) {
     const { x, y } = getCoords(height, cellNum);
-    schedule[x][y] = (schedule[x][y] + 1) % 2;
+    schedule[x][y] = inverse(schedule[x][y]);
+
     return schedule;
 }

@@ -1,19 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import modifySchedule from "../helpers/modifySchedule";
 import getCoords from "../helpers/getCoords";
+import inverse from "../helpers/inverse";
 
 export default function Cell({
     schedule,
     setSchedule,
     cellNum,
     height,
-    mouse
+    mouse,
+    mode,
+    setMode,
 }: {
     schedule: number[][];
     setSchedule: any;
     cellNum: number;
     height: number;
     mouse: boolean;
+    mode: number;
+    setMode: any;
 }) {
     // TODO: Replace starting state if loading calendar
     // TODO: useEffect handling the fetching of the data from firebase
@@ -29,31 +34,46 @@ export default function Cell({
         });
     }, [schedule]);
 
-    function handleClick() {
-        setSchedule((prevSchedule: number[][]) => {
-            const newSchedule = modifySchedule(prevSchedule, cellNum, height);
-            return [...newSchedule];
-        });
-    }
-
     function handleOnMouseEnter() {
-        if(mouse) {
-            console.log("wow its working")
+        if (mouse) {
             setSchedule((prevSchedule: number[][]) => {
-                const newSchedule = modifySchedule(prevSchedule, cellNum, height);
-                return [...newSchedule];
+                const { x, y } = getCoords(height, cellNum);
+                prevSchedule[x][y] = mode;
+                return [...prevSchedule];
             });
         }
     }
+
+    function handleOnMouseLeave() {
+        if (mouse) {
+            setSchedule((prevSchedule: number[][]) => {
+                const { x, y } = getCoords(height, cellNum);
+                prevSchedule[x][y] = mode;
+                return [...prevSchedule];
+            });
+        }
+    }
+
+    function handleOnMouseDown() {
+        const inv = inverse(active);
+        setMode(inv);
+        setSchedule((prevSchedule: number[][]) => {
+            const { x, y } = getCoords(height, cellNum);
+            prevSchedule[x][y] = inv;
+            return [...prevSchedule];
+        });
+    }
+
+    console.log("mode is now:", mode);
 
     return (
         <div
             className={`${
                 active === 1 ? "bg-green-300" : "bg-red-300"
             } w-24 h-6 border border-style:solid`}
-            onClick={handleClick}
-            onDragOver={handleClick}
             onMouseEnter={handleOnMouseEnter}
+            onMouseDown={handleOnMouseDown}
+            onMouseLeave={handleOnMouseLeave}
         />
     );
 }

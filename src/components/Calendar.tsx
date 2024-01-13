@@ -8,28 +8,34 @@ export default function Calendar({
 }) {
     const [schedule, setSchedule] =
         useState<Array<Array<number>>>(parseSchedule);
-    const [mouse, setMouse] = useState<boolean>(false)
+    const [mouse, setMouse] = useState<boolean>(false);
+    const [mode, setMode] = useState(0);
 
     useEffect(() => {
         const saveData = setTimeout(() => {
-            console.log("Saving...")
+            console.log("Saving...");
             console.log(schedule);
-        }, 2000)
+        }, 2000);
 
         return () => clearTimeout(saveData);
     }, [schedule]);
 
-    const display = displaySchedule(schedule, setSchedule, mouse);
+    const display = displaySchedule(
+        schedule,
+        setSchedule,
+        mouse,
+        mode,
+        setMode
+    );
 
     function handleMouseDown() {
-        console.log("mouse down")
-        setMouse(true)
-        
+        console.log("mouse down");
+        setMouse(true);
     }
-    
+
     function handleMouseUp() {
-        console.log("mouse up")
-        setMouse(false)
+        console.log("mouse up");
+        setMouse(false);
     }
 
     return (
