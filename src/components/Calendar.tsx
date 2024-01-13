@@ -11,8 +11,8 @@ export default function Calendar({
         useState<Array<Array<number>>>(parseSchedule);
     const [mouse, setMouse] = useState<boolean>(false);
     const [mode, setMode] = useState(0);
-    const [start, setStart] = useState<number>(-1);
-    const [current, setCurrent] = useState<number>(-1);
+    const [start, setStart] = useState<number>(0);
+    const [current, setCurrent] = useState<number>(0);
 
     useEffect(() => {
         const saveData = setTimeout(() => {
@@ -25,7 +25,7 @@ export default function Calendar({
 
     useEffect(() => {
         setSchedule((prevSchedule: number[][]) => {
-            prevSchedule = calcArea(prevSchedule, schedule[0].length, start, current)
+            prevSchedule = calcArea(prevSchedule, schedule[0].length, start, current, mode)
             return [...prevSchedule]
         })
     }, [start, current])
