@@ -3,12 +3,14 @@ import { Route, Routes, Link } from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
 import SignUpScreen from './screens/SignUpScreen'
+import NavBar from './components/NavBar'
 
 function App() {
 
   return (
     <>
-      <Link to="/home">pee</Link>
+    <NavBar></NavBar>
+      {/* <Link to="/home">pee</Link> */}
       <Routes>
         <Route path="/" element={<LoginScreen />} />
         <Route path="/login" element={<LoginScreen />} />
