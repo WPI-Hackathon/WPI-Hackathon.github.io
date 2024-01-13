@@ -1,6 +1,23 @@
 import { User, getAuth, onAuthStateChanged } from "firebase/auth"
 import { useState, useEffect } from "react"
+import Group from "../components/Group"
 
+export type GroupData = {
+  name: string,
+  members: string[]
+};
+
+const groups: GroupData[] = [
+
+  {
+    name: "g1",
+    members: ["tom", "dick", "harry"]
+  },
+  {
+    name: "g2",
+    members: ["joe", "dick", "harry"]
+  }
+]
 export default function ProfileScreen() {
   const auth = getAuth()
 
@@ -22,8 +39,13 @@ export default function ProfileScreen() {
 
       <div className="flex-auto justify-center">
         <div className="flex h-full">
-          <div className="w-3/4 bg-red-50">list groups here</div>
-          <div className="w-1/4 bg-cyan-50">have calendar here</div>
+          <div className="w-2/4 bg-red-900">calendarhere</div>
+          <div className="w-2/4 bg-cyan-900">
+            {groups.map((group: GroupData) =>
+              <Group group_data={group} />
+            )}
+
+          </div>
         </div>
       </div>
     </div>
