@@ -43,7 +43,7 @@ export default function ProfileScreen() {
         <div className="w-2/3 bg-indigo-300 flex-grow flex justify-center items-center">
           <h1 className="mb-2">Calendar Placeholder</h1>
         </div>
-        <div className="w-1/3 bg-white flex-grow flex flex-col items-center">
+        <div className="w-1/3 flex-grow flex flex-col items-center">
           <h3 className="text-xl mb-4 font-semibold">Groups</h3>
           {groups.map((group: GroupData) => (
             // <Group key={group.name} group_data={group} />
