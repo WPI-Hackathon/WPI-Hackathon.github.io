@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import getCoords from "../../helpers/getCoords";
 import inverse from "../../helpers/inverse";
-import { act } from "react-dom/test-utils";
 
 export default function Cell({
     schedule,
