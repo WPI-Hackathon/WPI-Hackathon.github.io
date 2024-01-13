@@ -40,19 +40,50 @@ export default function LoginScreen() {
   }
 
 
+  // return (
+  //   <section>
+  //     <div>{JSON.stringify(user)}</div>
+  //     <div className="my-10">
+  //       <input type="text" placeholder="Email" onChange={event => setEmail(event.target.value)} />
+  //     </div>
+  //     <div className="my-10">
+  //       <input type="text" placeholder="Password" onChange={event => setPassword(event.target.value)} />
+  //     </div>
+  //     <div className="my-20">
+  //       <button onClick={login}>Submit</button>
+  //     </div>
+  //   </section>
+  // )
+
   return (
-    <section>
-      <div>{JSON.stringify(user)}</div>
-      <div className="my-10">
-        <input type="text" placeholder="email" onChange={event => setEmail(event.target.value)} />
+    <section className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow-md">
+      {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
+      <div className="mb-4 text-center">Login</div>
+      <div className="my-4">
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={(event) => setEmail(event.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        />
       </div>
-      <div className="my-10">
-        <input type="text" placeholder="password" onChange={event => setPassword(event.target.value)} />
+      <div className="my-4">
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(event) => setPassword(event.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        />
       </div>
-      <div className="my-20">
-        <button onClick={login}>Submit</button>
+      <div className="my-8 text-center">
+        <button
+          onClick={login}
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+          >
+          Submit
+        </button>
       </div>
     </section>
-  )
+  );
 }
 
