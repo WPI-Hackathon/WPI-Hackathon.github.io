@@ -1,20 +1,12 @@
 import './App.css'
-import { Route, Routes, Link } from 'react-router-dom'
-import HomeScreen from './screens/HomeScreen'
-import LoginScreen from './screens/LoginScreen'
-import SignUpScreen from './screens/SignUpScreen'
+import Calendar from './components/Calendar'
 
 function App() {
+  const apiCall = [[0, 1, 1, 0], [1, 1, 0, 1]]
 
   return (
     <>
-      <Link to="/home">pee</Link>
-      <Routes>
-        <Route path="/" element={<LoginScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/signup" element={<SignUpScreen />} />
-        <Route path="/home" element={<HomeScreen />} />
-      </Routes>
+      <Calendar parseSchedule={apiCall}/>
     </>
   )
 }
