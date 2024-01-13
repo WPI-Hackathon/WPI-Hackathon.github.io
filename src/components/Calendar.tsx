@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { displaySchedule } from "./helpers/displaySchedule";
+import calcArea from "./helpers/calcArea";
 
 export default function Calendar({
     parseSchedule,
@@ -10,6 +11,8 @@ export default function Calendar({
         useState<Array<Array<number>>>(parseSchedule);
     const [mouse, setMouse] = useState<boolean>(false);
     const [mode, setMode] = useState(0);
+    const [start, setStart] = useState<number>(-1);
+    const [current, setCurrent] = useState<number>(-1);
 
     useEffect(() => {
         const saveData = setTimeout(() => {
@@ -20,21 +23,30 @@ export default function Calendar({
         return () => clearTimeout(saveData);
     }, [schedule]);
 
+    useEffect(() => {
+        setSchedule((prevSchedule: number[][]) => {
+            prevSchedule = calcArea(prevSchedule, schedule[0].length, start, current)
+            return [...prevSchedule]
+        })
+    }, [start, current])
+
+    console.log("CURRENT", current)
+
     const display = displaySchedule(
         schedule,
         setSchedule,
         mouse,
         mode,
-        setMode
+        setMode,
+        setStart,
+        setCurrent
     );
 
     function handleMouseDown() {
-        console.log("mouse down");
         setMouse(true);
     }
 
     function handleMouseUp() {
-        console.log("mouse up");
         setMouse(false);
     }
 

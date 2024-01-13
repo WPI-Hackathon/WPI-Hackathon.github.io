@@ -5,7 +5,9 @@ export function displaySchedule(
     setSchedule: any,
     mouse: boolean,
     mode: number,
-    setMode: any
+    setMode: any,
+    setStart: any,
+    setCurrent: any
 ) {
     let key = 0;
 
@@ -13,7 +15,7 @@ export function displaySchedule(
         <div className="flex flex-row">
             {schedule.map((week) => (
                 <div className="flex-auto w-auto">
-                    {week.map((day) => {
+                    {week.map(() => {
                         key++;
                         return (
                             <Cell
@@ -24,6 +26,8 @@ export function displaySchedule(
                                 mouse={mouse}
                                 mode={mode}
                                 setMode={setMode}
+                                setStart={setStart}
+                                setCurrent={setCurrent}
                             />
                         );
                     })}

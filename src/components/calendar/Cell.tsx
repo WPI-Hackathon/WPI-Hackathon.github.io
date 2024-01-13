@@ -11,6 +11,8 @@ export default function Cell({
     mouse,
     mode,
     setMode,
+    setStart,
+    setCurrent
 }: {
     schedule: number[][];
     setSchedule: any;
@@ -19,6 +21,8 @@ export default function Cell({
     mouse: boolean;
     mode: number;
     setMode: any;
+    setStart: any;
+    setCurrent: any;
 }) {
     // TODO: Replace starting state if loading calendar
     // TODO: useEffect handling the fetching of the data from firebase
@@ -26,6 +30,7 @@ export default function Cell({
         const { x, y } = getCoords(height, cellNum);
         return schedule[x][y];
     });
+   
 
     useEffect(() => {
         setActive(() => {
@@ -35,33 +40,46 @@ export default function Cell({
     }, [schedule]);
 
     function handleOnMouseEnter() {
-        if (mouse) {
-            setSchedule((prevSchedule: number[][]) => {
-                const { x, y } = getCoords(height, cellNum);
-                prevSchedule[x][y] = mode;
-                return [...prevSchedule];
-            });
+        // if (mouse) {
+        //     if (active !== mode) {
+        //         console.log("running");
+        //         setSchedule((prevSchedule: number[][]) => {
+        //             const { x, y } = getCoords(height, cellNum);
+        //             prevSchedule[x][y] = mode;
+        //             return [...prevSchedule];
+        //         });
+        //     }
+        // }
+        if(mouse) {
+            setCurrent(cellNum)
         }
     }
 
     function handleOnMouseLeave() {
-        if (mouse) {
-            setSchedule((prevSchedule: number[][]) => {
-                const { x, y } = getCoords(height, cellNum);
-                prevSchedule[x][y] = mode;
-                return [...prevSchedule];
-            });
-        }
+        // if (mouse) {
+        //     if (mode === active) {
+        //         setSchedule((prevSchedule: number[][]) => {
+        //             const { x, y } = getCoords(height, cellNum);
+        //             prevSchedule[x][y] = inverse(mode);
+        //             return [...prevSchedule];
+        //         });
+        //     }
+        // }
+
+        // Don't set current instead revert the number (might not even need this)
     }
 
     function handleOnMouseDown() {
-        const inv = inverse(active);
-        setMode(inv);
-        setSchedule((prevSchedule: number[][]) => {
-            const { x, y } = getCoords(height, cellNum);
-            prevSchedule[x][y] = inv;
-            return [...prevSchedule];
-        });
+        // const inv = inverse(active);
+        // setSchedule((prevSchedule: number[][]) => {
+            //     const { x, y } = getCoords(height, cellNum);
+            //     prevSchedule[x][y] = inv;
+            //     return [...prevSchedule];
+            // });
+        setMode(inverse(active));
+        setStart(cellNum)
+        setCurrent(cellNum)
+        console.log("SET CURRENT", cellNum)
     }
 
     console.log("mode is now:", mode);
