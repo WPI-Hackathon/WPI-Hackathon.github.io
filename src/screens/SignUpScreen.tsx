@@ -46,7 +46,7 @@ export default function SignUpScreen() {
   }
   return (
     <section>
-      <div>{user}</div>
+      <div>{JSON.stringify(user)}</div>
       <div className="my-10">
         <input type="text" placeholder="email" onChange={event => setEmail(event.target.value)} />
       </div>
