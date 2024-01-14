@@ -61,19 +61,7 @@ export default function CreateGroupScreen() {
           <li className="py-1">Your group members need to join your group with this key</li>
         </ul>
       </div>
-      {/* <div className="mt-12">
-        <input type="text" placeholder="Group Name" onChange={event => setGroupName(event.target.value)} />
-      </div>
-      <button className="my-12" onClick={createGroup}>Click to create Group</button>
-      <div className="my-12">
-        <p className="my-6">Unique Key:</p>
-        {key !== "" ?
-
-          <p className="w-max m-auto p-2  my-6 border-2 border-solid">{key}</p>
-
-          : <p className="m-auto p-2  my-6 "></p>}
-        <button onClick={copyKey}>copy key</button>
-      </div> */}
+    
       <div className="mt-10">
         <input
           type="text"
@@ -102,8 +90,6 @@ export default function CreateGroupScreen() {
           Copy Key
         </button>
       </div>
-
-
     </div>
   )
 
