@@ -69,7 +69,7 @@ export default function LoginScreen() {
         </button>
       </div>
       <p>Need an account?</p>
-      <Link to="/signup" className="text-white">Sign up here</Link>
+      <Link to="/signup">Sign up here</Link>
     </section>
   );
 }
