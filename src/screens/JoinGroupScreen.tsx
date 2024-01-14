@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore"
 import { db, getAuth } from "../config/firebase"
 import { User, onAuthStateChanged } from "firebase/auth";
+import { Alert } from "@mui/material";
 
 export default function JoinGroupScreen() {
 
@@ -20,10 +21,15 @@ export default function JoinGroupScreen() {
   const [user, setUser] = useState(auth.currentUser)
 
   const [key, setKey] = useState("")
+  const [showAlert, setShowAlert] = useState(false);
 
   const joinGroup = async () => {
     if (!user) {
-      alert("you must be logged in to join a group")
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false)
+      }, 2000)
+
     } else {
 
       //ensure group exists
@@ -76,8 +82,14 @@ export default function JoinGroupScreen() {
         className="my-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
         onClick={joinGroup}
       >
-        Click to join Group
+        Join Group
       </button>
+      {showAlert
+        ?
+        <Alert severity="info" className="absolute w-1/2  m-auto left-0 right-0 bottom-4">You must be logged in to join a group</ Alert>
+        :
+        null
+      }
 
     </div>
   )
