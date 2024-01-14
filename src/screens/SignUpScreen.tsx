@@ -78,28 +78,11 @@ export default function SignUpScreen() {
     })
 
   }
-  // return (
-  //   <section>
-  //     <div>{JSON.stringify(user)}</div>
-  //     <div className="my-10">
-  //       <input type="text" placeholder="display name" onChange={event => setDisplayName(event.target.value)} />
-  //     </div>
-  //     <div className="my-10">
-  //       <input type="text" placeholder="email" onChange={event => setEmail(event.target.value)} />
-  //     </div>
-  //     <div className="my-10">
-  //       <input type="text" placeholder="password" onChange={event => setPassword(event.target.value)} />
-  //     </div>
-  //     <div className="my-20">
-  //       <button onClick={signup}>Submit</button>
-  //     </div>
-  //   </section>
-  // )
 
   return (
-    <section className="max-w-md mx-auto pt-24">
+    <section className="max-w-md mx-auto pt-52">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
-      <div className="pb-4 text-center">Sign Up</div>
+      <div className="pb-4 text-center text-lg font-semibold">Sign Up</div>
       <div className="py-4">
         <input
           type="text"
