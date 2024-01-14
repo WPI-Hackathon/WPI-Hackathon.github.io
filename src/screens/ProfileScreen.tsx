@@ -3,11 +3,8 @@ import { useState, useEffect } from "react"
 import Group from "../components/Group"
 import { doc, getDoc } from "firebase/firestore"
 import { db } from "../config/firebase"
+import { Link } from "react-router-dom"
 
-export type GroupData = {
-  name: string,
-  members: string[]
-};
 
 export default function ProfileScreen() {
   const auth = getAuth()
@@ -44,8 +41,14 @@ export default function ProfileScreen() {
           </div>
           <div className="w-1/3 flex-grow flex flex-col items-center">
             <h3 className="text-xl mb-4 font-semibold">Groups</h3>
-            {groups.map((group: GroupData) => (
-              <Group key={group.name} group={group} />
+            {groups.map((group: any) => (
+              <div key={group.name} className="border-solid border-2 mb-6" style={{ width: "70%" }}>
+                <Link to={"/groupcalendar/" + group.id} className="text-white w-full h-full">
+                  <div className="flex justify-center items-center p-2 flex-col">
+                    <Group key={group.name} group={group} />
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
