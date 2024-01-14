@@ -49,13 +49,13 @@ const NavBar: React.FC = () => {
 
         {user ? (
           <div className="flex items-center space-x-4">
-              <div className="text-white">Hello, {user?.displayName}!</div>
+              <div className="text-white font-medium">Hello, {user?.displayName}!</div>
             <div>
-              <button className='bg-white hover:bg-gray-100 text-slate-800 text-sm' onClick={logout}>Logout</button>
+              <button className='bg-white font-medium hover:bg-gray-100 text-slate-800 text-sm' onClick={logout}>Logout</button>
             </div>
             </div>
         ) : (
-          <button className="bg-white hover:bg-gray-100 text-slate-800 text-sm">
+          <button className="bg-white font-medium hover:bg-gray-100 text-slate-800 text-sm">
             <Link to="/login">Login</Link>
           </button>
         )}
