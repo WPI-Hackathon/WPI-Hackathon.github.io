@@ -97,7 +97,7 @@ export default function SignUpScreen() {
   // )
 
   return (
-    <section className="max-w-md mx-auto mt-20 p-6 rounded shadow-md">
+    <section className="max-w-md mx-auto pt-24">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
       <div className="pb-4 text-center">Sign Up</div>
       <div className="py-4">
