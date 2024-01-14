@@ -28,13 +28,14 @@ export default function CreateEventScreen() {
                 </div>
             </div>
             <div className="w-1/3 h-full justify-center">
-                <div>
+                <div className="mt-10">
                     <input
                         type="text"
                         value={groupName}
                         onChange={(e) => {
                             setGroupName(e.target.value);
                         }}
+                        className="text-center bg-white text-black"
                     />
                 </div>
             </div>
