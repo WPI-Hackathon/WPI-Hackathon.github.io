@@ -44,7 +44,7 @@ export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
           Saturday: schedule[6]
         }
         setDoc(doc(db, "calendars", user.uid), user_schedule)
-        console.log("Saving...");
+        console.log(user_schedule);
       }
 
 
