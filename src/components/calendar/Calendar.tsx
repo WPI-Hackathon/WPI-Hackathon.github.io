@@ -25,10 +25,16 @@ export default function Calendar({
 
     useEffect(() => {
         setSchedule((prevSchedule: number[][]) => {
-            prevSchedule = calcArea(prevSchedule, schedule[0].length, start, current, mode)
-            return [...prevSchedule]
-        })
-    }, [start, current])
+            prevSchedule = calcArea(
+                prevSchedule,
+                schedule[0].length,
+                start,
+                current,
+                mode
+            );
+            return [...prevSchedule];
+        });
+    }, [start, current]);
 
     const display = displaySchedule(
         schedule,
@@ -46,12 +52,16 @@ export default function Calendar({
 
     function handleMouseUp() {
         setMouse(false);
-        setCurrent(-1)
-        setStart(-1)
+        setCurrent(-1);
+        setStart(-1);
     }
 
     return (
-        <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+        <div
+            className="flex flex-col"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+        >
             {display}
             <div>{`${schedule}`}</div>
         </div>

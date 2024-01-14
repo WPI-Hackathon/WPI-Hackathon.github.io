@@ -12,9 +12,9 @@ export function displaySchedule(
     let key = 0;
 
     return (
-        <div className="flex flex-row">
+        <div className="w-full h-full flex flex-row">
             {schedule.map((week) => (
-                <div className="flex-auto w-auto">
+                <div className="w-auto">
                     {week.map(() => {
                         key++;
                         return (

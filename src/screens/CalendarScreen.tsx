@@ -6,5 +6,9 @@ export default function CalendarScreen() {
         [1, 1, 0, 1],
     ];
 
-    return <Calendar parseSchedule={apiCall} />;
+    return (
+        <div className="flex flex-col items-center justify-center pt-48">
+            <Calendar parseSchedule={apiCall} />
+        </div>
+    );
 }
