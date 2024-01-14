@@ -16,7 +16,7 @@ export default function SignUpScreen() {
         setUser(user)
       }
     })
-  })
+  }, [])
 
   const [displayName, setDisplayName] = useState("")
   const [email, setEmail] = useState("")

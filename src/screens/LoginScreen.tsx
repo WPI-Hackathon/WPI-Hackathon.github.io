@@ -14,7 +14,7 @@ export default function LoginScreen() {
         setUser(user)
       }
     })
-  })
+  }, [])
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
