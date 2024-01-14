@@ -44,9 +44,6 @@ const NavBar: React.FC = () => {
         <div>
           <Link to="/joingroup" className="text-white">Join Group</Link>
         </div>
-        <div>
-          <Link to="/signup" className="text-white">Sign Up</Link>
-        </div>
 
         {user ?
           <div>
