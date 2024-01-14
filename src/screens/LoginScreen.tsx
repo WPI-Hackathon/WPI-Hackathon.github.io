@@ -55,8 +55,9 @@ export default function LoginScreen() {
   //   </section>
   // )
 
+  
   return (
-    <section className="max-w-md mx-auto mt-20 p-6 rounded shadow-md">
+    <section className="max-w-md mx-auto pt-24">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
       <div className="p-4 text-center">Login</div>
       <div className="my-4">
