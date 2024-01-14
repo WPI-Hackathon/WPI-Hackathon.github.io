@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar: React.FC = () => {
+
   return (
     <nav className="bg-indigo-600 p-4 absolute top-0 w-full">
       <div className="flex space-x-8">
@@ -16,6 +17,12 @@ const NavBar: React.FC = () => {
         </div>
         <div>
           <Link to="/creategroup" className="text-white">Group Setup</Link>
+        </div>
+        <div>
+          <Link to="/login" className="text-white">Login</Link>
+        </div>
+        <div>
+          <Link to="/signup" className="text-white">Sign Up</Link>
         </div>
       </div>
     </nav>
