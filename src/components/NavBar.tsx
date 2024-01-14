@@ -27,7 +27,7 @@ const NavBar: React.FC = () => {
   }
 
   return (
-    <nav className="bg-indigo-600 p-4 absolute top-0 w-full">
+    <nav className="bg-indigo-600 p-4 fixed top-0 w-full">
       <div className="flex justify-between items-center">
         <div className="space-x-8">
           <Link to="/home" className="text-white">
