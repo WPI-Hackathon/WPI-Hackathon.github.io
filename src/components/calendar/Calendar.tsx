@@ -5,6 +5,7 @@ import CalendarHeader from "./CalendarHeader";
 import { db, getAuth } from "../../config/firebase";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { Alert } from "@mui/material";
 
 export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
   const [schedule, setSchedule] =
@@ -13,6 +14,8 @@ export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
   const [mode, setMode] = useState(0);
   const [start, setStart] = useState<number>(0);
   const [current, setCurrent] = useState<number>(0);
+  const [showSaving, setSaving] = useState(false);
+  const [showSaved, setSaved] = useState(true);
 
 
   const auth = getAuth();
@@ -29,6 +32,7 @@ export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
 
 
   useEffect(() => {
+    setSaving(true);
     const saveData = setTimeout(() => {
 
       if (!user) {
@@ -44,10 +48,14 @@ export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
           Saturday: schedule[6]
         }
         setDoc(doc(db, "calendars", user.uid), user_schedule)
-        console.log(user_schedule);
+        setSaving(false);
+        setSaved(true)
+
+        setTimeout(() => {
+          setSaved(false)
+        }, 2000)
+
       }
-
-
     }, 2000);
 
     return () => clearTimeout(saveData);
@@ -99,6 +107,16 @@ export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
         </div>
       </div>
 
+      {showSaving
+        ?
+        <Alert severity="info" className="fixed w-1/2  m-auto left-0 right-0 bottom-4">Saving...</ Alert>
+        :
+        showSaved
+          ?
+          <Alert severity="success" className="fixed w-1/2  m-auto left-0 right-0 bottom-4">Saved</Alert>
+          :
+          null
+      }
     </div>
   );
 }

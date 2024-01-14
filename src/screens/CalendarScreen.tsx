@@ -3,6 +3,7 @@ import { db, getAuth } from "../config/firebase";
 import { useState, useEffect } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore"
+import { Alert } from "@mui/material";
 
 
 
@@ -15,13 +16,13 @@ export default function CalendarScreen() {
         setCalendar(create2DCalendarArray(user))
       } else {
         setUser(user)
+        setCalendar(null)
       }
     })
   }, [])
 
-  const [user, setUser] = useState(auth.currentUser)
+  const [user, setUser] = useState(auth.currentUser);
   const [calendar, setCalendar] = useState<any>(null);
-  console.log(calendar)
 
   const create2DCalendarArray = (user: User | null) => {
     if (user) {
@@ -53,8 +54,10 @@ export default function CalendarScreen() {
           <Calendar parseSchedule={calendar} />
         </div>
         :
-        null}
-
+        <div>
+          <p className="text-xl pt-80">Login to set your calendar</p>
+        </div>
+      }
     </div>
   );
 }
