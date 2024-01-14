@@ -65,15 +65,15 @@ export default function JoinGroupScreen() {
         </ul>
       </div>
       <div className="mt-10">
-        <input 
-          className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" 
-          type="text" 
-          placeholder="Group Key" 
-          onChange={event => setKey(event.target.value)} 
+        <input
+          className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          type="text"
+          placeholder="Group Key"
+          onChange={event => setKey(event.target.value)}
         />
       </div>
-      <button 
-        className="my-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700" 
+      <button
+        className="my-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
         onClick={joinGroup}
       >
         Click to join Group
