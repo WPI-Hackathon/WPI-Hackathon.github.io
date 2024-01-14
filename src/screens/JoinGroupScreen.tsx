@@ -36,7 +36,7 @@ export default function JoinGroupScreen() {
 
         //add to group
         await updateDoc(groupRef, {
-          members: arrayUnion(user.uid)
+          members: arrayUnion({ id: user.uid, name: user.displayName })
         })
 
         //add to user profile

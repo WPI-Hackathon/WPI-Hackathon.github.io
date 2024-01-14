@@ -36,7 +36,7 @@ export default function CreateGroupScreen() {
       await setDoc(groupRef, {
         name: groupName,
         owner: user.uid,
-        members: [user.uid],
+        members: [{ id: user.uid, name: user.displayName }],
         meeting_times: []
       })
       setKey(groupRef.id);
