@@ -79,7 +79,7 @@ export default function CreateGroupScreen() {
         className="my-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
         onClick={createGroup}
       >
-        Click to create Group
+        Create Group
       </button>
       <div className="my-10">
         <p>Unique Key:</p>
