@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import DatePicker from "../components/calendar/DayPicker";
 import Label from "../components/calendar/Label";
+import TimeSelections from "../components/calendar/TimeSelections";
+import dayjs from "dayjs";
 
 export default function CreateEventScreen() {
     // Use a 1d array of size 7, where 0 = not selected, 1 = selected
@@ -8,8 +10,8 @@ export default function CreateEventScreen() {
     // days go from sunday (i=0) -> saturday (i=6)
     const [selectedDays, setSelectedDays] = useState([0, 0, 0, 0, 0, 0, 0]);
 
-    const [startTime, setStartTime] = useState(540); // Default to 9 AM
-    const [endTime, setEndTime] = useState(1020); // Default to 5 PM
+    const [startTime, setStartTime] = useState(dayjs().hour(9)); // Default to 9 AM
+    const [endTime, setEndTime] = useState(dayjs().hour(17)); // Default to 5 PM
 
     const [groupName, setGroupName] = useState("Set a Group Name Here!");
 
@@ -39,7 +41,9 @@ export default function CreateEventScreen() {
                     />
                 </div>
             </div>
-            <div className="w-1/3"></div>
+            <div className="w-1/3">
+                <TimeSelections startTime={startTime} setStartTime={setStartTime} endTime={endTime} setEndTime={setEndTime}/>
+            </div>
         </div>
     );
 }
