@@ -1,6 +1,7 @@
 import { User, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
 import { useEffect, useState } from "react"
 import { getAuth } from "../config/firebase";
+import { Link } from "react-router-dom";
 
 export default function LoginScreen() {
 
@@ -39,26 +40,10 @@ export default function LoginScreen() {
     console.log(user)
   }
 
-
-  // return (
-  //   <section>
-  //     <div>{JSON.stringify(user)}</div>
-  //     <div className="my-10">
-  //       <input type="text" placeholder="Email" onChange={event => setEmail(event.target.value)} />
-  //     </div>
-  //     <div className="my-10">
-  //       <input type="text" placeholder="Password" onChange={event => setPassword(event.target.value)} />
-  //     </div>
-  //     <div className="my-20">
-  //       <button onClick={login}>Submit</button>
-  //     </div>
-  //   </section>
-  // )
-
   return (
-    <section className="max-w-md mx-auto mt-20 p-6 rounded shadow-md">
+    <section className="max-w-md mx-auto pt-24">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
-      <div className="mb-4 text-center">Login</div>
+      <div className="p-4 text-center">Login</div>
       <div className="my-4">
         <input
           type="text"
@@ -67,7 +52,7 @@ export default function LoginScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-4">
+      <div className="py-4">
         <input
           type="password"
           placeholder="Password"
@@ -75,14 +60,16 @@ export default function LoginScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-8 text-center">
+      <div className="py-8 text-center">
         <button
           onClick={login}
           className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
-          >
+        >
           Submit
         </button>
       </div>
+      <p>Need an account?</p>
+      <Link to="/signup">Sign up here</Link>
     </section>
   );
 }
