@@ -56,18 +56,28 @@ export default function JoinGroupScreen() {
   return (
     <div className="pt-20">
       <div className="m-auto">
-        <h1>How to Join a Group</h1>
-        <ul className="list-inside">
-          <li>Recieve a group key from a group owner</li>
-          <li>Enter your group key below</li>
-          <li>Click "Join Group"</li>
-          <li>Your group will be shown on your dashboard, and your calendar will be shared with the group owner</li>
+        <h1 className="font-semibold py-6">How to Join a Group</h1>
+        <ul className="list-inside list-decimal">
+          <li className="py-1">Recieve a group key from a group owner</li>
+          <li className="py-1">Enter your group key below</li>
+          <li className="py-1">Click "Join Group"</li>
+          <li className="py-1">Your group will be shown on your dashboard, and your calendar will be shared with the group owner</li>
         </ul>
       </div>
-      <div className="mt-12">
-        <input className="w-1/4 text-center" type="text" placeholder="Group Key" onChange={event => setKey(event.target.value)} />
+      <div className="mt-10">
+        <input
+          className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          type="text"
+          placeholder="Group Key"
+          onChange={event => setKey(event.target.value)}
+        />
       </div>
-      <button className="my-12" onClick={joinGroup}>Click to join Group</button>
+      <button
+        className="my-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+        onClick={joinGroup}
+      >
+        Click to join Group
+      </button>
 
     </div>
   )
