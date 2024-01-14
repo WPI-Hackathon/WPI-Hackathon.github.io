@@ -28,35 +28,37 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className="bg-indigo-600 p-4 absolute top-0 w-full">
-      <div className="flex space-x-8">
-        <div>
-          <Link to="/home" className="text-white">Home</Link>
-        </div>
-        <div>
-          <Link to="/calendar" className="text-white">My Calendar</Link>
-        </div>
-        <div>
-          <Link to="/dashboard" className="text-white">Dashboard</Link>
-        </div>
-        <div>
-          <Link to="/creategroup" className="text-white">Create Group</Link>
-        </div>
-        <div>
-          <Link to="/joingroup" className="text-white">Join Group</Link>
+      <div className="flex justify-between items-center">
+        <div className="space-x-8">
+          <Link to="/home" className="text-white">
+            Home
+          </Link>
+          <Link to="/calendar" className="text-white">
+            My Calendar
+          </Link>
+          <Link to="/dashboard" className="text-white">
+            Dashboard
+          </Link>
+          <Link to="/creategroup" className="text-white">
+            Create Group
+          </Link>
+          <Link to="/joingroup" className="text-white">
+            Join Group
+          </Link>
         </div>
 
-        {user ?
-          <div>
+        {user ? (
+          <div className="flex items-center space-x-4">
+              <div className="text-white font-medium">Hello, {user?.displayName}!</div>
             <div>
-              <button onClick={logout}>Logout</button>
+              <button className='bg-white font-medium hover:bg-gray-100 text-slate-800 text-sm' onClick={logout}>Logout</button>
             </div>
-            <div>Hello {user?.displayName}</div>
-          </div>
-          :
-          <button>
-            <Link to="/login" className="text-white">Login</Link>
+            </div>
+        ) : (
+          <button className="bg-white font-medium hover:bg-gray-100 text-slate-800 text-sm">
+            <Link to="/login">Login</Link>
           </button>
-        }
+        )}
       </div>
     </nav>
   );
