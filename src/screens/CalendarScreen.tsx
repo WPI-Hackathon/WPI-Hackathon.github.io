@@ -7,7 +7,7 @@ function create2DCalendarArray() {
         length: 7
         // inside map function generate array of size n
         // and fill it with `0`
-      }, () => new Array(48).fill(0));
+      }, () => new Array(96).fill(0));
 }
 
 export default function CalendarScreen() {
