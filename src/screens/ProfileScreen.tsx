@@ -1,24 +1,13 @@
 import { User, getAuth, onAuthStateChanged } from "firebase/auth"
 import { useState, useEffect } from "react"
 import Group from "../components/Group"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../config/firebase"
 
 export type GroupData = {
   name: string,
   members: string[]
 };
-
-const groups: GroupData[] = [
-  {
-    name: "g1",
-    members: ["tom", "dick", "harry"]
-  },
-  {
-    name: "g2",
-    members: ["joe", "dick", "harry"]
-  }
-]
-
-
 
 export default function ProfileScreen() {
   const auth = getAuth()
@@ -27,13 +16,24 @@ export default function ProfileScreen() {
     onAuthStateChanged(auth, (user: User | null) => {
       if (user) {
         setUser(user)
+
+        const userRef = doc(db, "users", user.uid);
+        getDoc(userRef).then((userSnap) => {
+          if (userSnap.exists()) {
+            console.log(user)
+            setGroups(userSnap.data().groups)
+          }
+        });
+
       } else {
         setUser(user)
       }
     })
-  })
+  }, [])
+
 
   const [user, setUser] = useState(auth.currentUser)
+  const [groups, setGroups] = useState([]);
 
   return (
     <div className="h-full flex flex-col items-center pt-20">
@@ -46,13 +46,7 @@ export default function ProfileScreen() {
         <div className="w-1/3 flex-grow flex flex-col items-center">
           <h3 className="text-xl mb-4 font-semibold">Groups</h3>
           {groups.map((group: GroupData) => (
-            // <Group key={group.name} group_data={group} />
-            <div key={group.name} className="border-solid border-2 p-2 mb-6" style={{ width: "70%" }}>
-              <div className="flex justify-center items-center flex-col">
-                <p className="text-lg font-semibold">{group.name}</p>
-                <p>{group.members.length} Members: {group.members.join(", ")}</p>
-              </div>
-            </div>
+            <Group key={group.name} group={group} />
           ))}
         </div>
       </div>

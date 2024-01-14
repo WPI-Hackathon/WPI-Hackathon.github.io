@@ -15,7 +15,7 @@ export default function JoinGroupScreen() {
         setUser(user)
       }
     })
-  })
+  }, [])
 
   const [user, setUser] = useState(auth.currentUser)
 

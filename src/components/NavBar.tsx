@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
         setUser(user)
       }
     })
-  })
+  }, [])
 
 
 

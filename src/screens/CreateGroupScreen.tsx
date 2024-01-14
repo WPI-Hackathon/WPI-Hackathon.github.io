@@ -15,7 +15,7 @@ export default function CreateGroupScreen() {
         setUser(user)
       }
     })
-  })
+  }, [])
   const [groupName, setGroupName] = useState("");
 
   const [user, setUser] = useState(auth.currentUser)
