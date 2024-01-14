@@ -21,7 +21,7 @@ export default function DayPicker({
     
 
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-center">
             {selectedDays.map((value, index) => {
                 console.log(index);
                 return (

@@ -14,7 +14,8 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <CreateEventScreen />
+      {/* <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<LoginScreen />} />
         <Route path="/login" element={<LoginScreen />} />
@@ -22,7 +23,7 @@ function App() {
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/creategroup" element={<CreateGroupScreen />} />
         <Route path="/dashboard" element={<ProfileScreen />} />
-      </Routes>
+      </Routes> */}
     </>
   )
 }
