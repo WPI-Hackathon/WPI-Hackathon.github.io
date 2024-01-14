@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { displaySchedule } from "../../helpers/displaySchedule";
 import calcArea from "../../helpers/calcArea";
+import CalendarHeader from "./CalendarHeader";
 
-export default function Calendar({
-    parseSchedule,
-}: {
-    parseSchedule: number[][];
-}) {
+export default function Calendar({ parseSchedule }: { parseSchedule: any }) {
     const [schedule, setSchedule] =
         useState<Array<Array<number>>>(parseSchedule);
     const [mouse, setMouse] = useState<boolean>(false);
@@ -17,7 +14,6 @@ export default function Calendar({
     useEffect(() => {
         const saveData = setTimeout(() => {
             console.log("Saving...");
-            // TODO: Put firebase here
         }, 2000);
 
         return () => clearTimeout(saveData);
@@ -57,13 +53,18 @@ export default function Calendar({
     }
 
     return (
-        <div
-            className="flex flex-col"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-        >
-            {display}
-            <div>{`${schedule}`}</div>
+        <div className="flex flex-row">
+            <div className="flex flex-col ">
+                <CalendarHeader />
+                <div
+                    className="flex flex-col mb-10"
+                    onMouseDown={handleMouseDown}
+                    onMouseUp={handleMouseUp}
+                >
+                    {display}
+                </div>
+            </div>
+
         </div>
     );
 }

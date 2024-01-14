@@ -65,7 +65,7 @@ export default function Cell({
         <div
             className={`${
                 active === 1 ? "bg-green-300" : "bg-red-300"
-            } w-24 h-6 border border-style:solid`}
+            } w-24 h-4 border border-style:solid`}
             onMouseEnter={handleOnMouseEnter}
             onMouseDown={handleOnMouseDown}
             onMouseLeave={handleOnMouseLeave}
