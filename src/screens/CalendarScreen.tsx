@@ -3,7 +3,6 @@ import { db, getAuth } from "../config/firebase";
 import { useState, useEffect } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore"
-import { Alert } from "@mui/material";
 
 
 
@@ -21,7 +20,7 @@ export default function CalendarScreen() {
     })
   }, [])
 
-  const [user, setUser] = useState(auth.currentUser);
+  const [_, setUser] = useState(auth.currentUser);
   const [calendar, setCalendar] = useState<any>(null);
 
   const create2DCalendarArray = (user: User | null) => {

@@ -21,7 +21,7 @@ export default function SignUpScreen() {
   const [displayName, setDisplayName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [user, setUser] = useState(auth.currentUser)
+  const [_, setUser] = useState(auth.currentUser)
 
 
   const signup = () => {

@@ -1,9 +1,7 @@
-import DatePicker from "./DayPicker";
 
 export default function GroupCalendar() {
-    return (
-        <div>
-            <DatePicker />
-        </div>
-    )
+  return (
+    <div>
+    </div>
+  )
 };
