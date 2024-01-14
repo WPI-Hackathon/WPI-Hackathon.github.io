@@ -41,9 +41,9 @@ export default function LoginScreen() {
   }
 
   return (
-    <section className="max-w-md mx-auto pt-24">
+    <section className="max-w-md mx-auto pt-52">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
-      <div className="p-4 text-center">Login</div>
+      <div className="p-4 text-center text-lg font-semibold">Login</div>
       <div className="my-4">
         <input
           type="text"
