@@ -43,7 +43,7 @@ export default function ProfileScreen() {
             <h3 className="text-xl mb-4 font-semibold">Groups</h3>
             {groups.map((group: any) => (
               <div key={group.name} className="border-solid border-2 mb-6" style={{ width: "70%" }}>
-                <Link to={"/groupcalendar/" + group.id} className="text-white w-full h-full">
+                <Link to={"/groupcalendar/" + group.id} className="w-full h-full">
                   <div className="flex justify-center items-center p-2 flex-col">
                     <Group key={group.name} group={group} />
                   </div>
