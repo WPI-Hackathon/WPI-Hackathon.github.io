@@ -1,10 +1,8 @@
-import { GroupData } from "../screens/ProfileScreen"
-type GroupProps = {
-  group: GroupData
-}
-export default function Group({ group }: GroupProps) {
+export default function Group({ group }: any) {
   return (
-    <p className="text-lg font-semibold">{group.name}</p>
-
+    <div>
+      <p className="text-lg font-semibold">{group.name}</p>
+      <p className="text-xs font-semibold">{group.id}</p>
+    </div>
   )
 }
