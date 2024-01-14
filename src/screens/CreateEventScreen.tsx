@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "../components/calendar/DayPicker";
 import Label from "../components/calendar/Label";
 
@@ -8,15 +8,37 @@ export default function CreateEventScreen() {
     // days go from sunday (i=0) -> saturday (i=6)
     const [selectedDays, setSelectedDays] = useState([0, 0, 0, 0, 0, 0, 0]);
 
-    console.log(typeof selectedDays);
+    const [startTime, setStartTime] = useState(540); // Default to 9 AM
+    const [endTime, setEndTime] = useState(1020); // Default to 5 PM
+
+    const [groupName, setGroupName] = useState("Set a Group Name Here!");
 
     return (
-        <div>
-            <Label />
-            <DatePicker
-                selectedDays={selectedDays}
-                setSelectedDays={setSelectedDays}
-            />
+        <div className="flex w-full h-full">
+            <div className="flex flex-col w-1/3 h-full justify-center">
+                <div>
+                    <h4 className="mb-10">
+                        Select the dates that you want to make a schedule for!
+                    </h4>
+                    <Label />
+                    <DatePicker
+                        selectedDays={selectedDays}
+                        setSelectedDays={setSelectedDays}
+                    />
+                </div>
+            </div>
+            <div className="w-1/3 h-full justify-center">
+                <div>
+                    <input
+                        type="text"
+                        value={groupName}
+                        onChange={(e) => {
+                            setGroupName(e.target.value);
+                        }}
+                    />
+                </div>
+            </div>
+            <div className="w-1/3"></div>
         </div>
     );
 }
