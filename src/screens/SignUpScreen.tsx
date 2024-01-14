@@ -97,10 +97,10 @@ export default function SignUpScreen() {
   // )
 
   return (
-    <section className="max-w-md mx-auto mt-20 p-6 rounded shadow-md">
+    <section className="max-w-md mx-auto pt-24">
       {/* <div className="mb-4 text-center">{JSON.stringify(user)}</div> */}
-      <div className="mb-4 text-center">Sign Up</div>
-      <div className="my-4">
+      <div className="pb-4 text-center">Sign Up</div>
+      <div className="py-4">
         <input
           type="text"
           placeholder="Display Name"
@@ -108,7 +108,7 @@ export default function SignUpScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-4">
+      <div className="py-4">
         <input
           type="text"
           placeholder="Email"
@@ -116,7 +116,7 @@ export default function SignUpScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-4">
+      <div className="py-4">
         <input
           type="password"
           placeholder="Password"
@@ -124,7 +124,7 @@ export default function SignUpScreen() {
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
       </div>
-      <div className="my-8 text-center">
+      <div className="py-8 text-center">
         <button
           onClick={signup}
           className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
