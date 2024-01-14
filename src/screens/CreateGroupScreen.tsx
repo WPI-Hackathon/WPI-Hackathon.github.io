@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { db, getAuth } from "../config/firebase";
 import { arrayUnion, updateDoc, collection, doc, setDoc } from "firebase/firestore";
 import { User, onAuthStateChanged } from "firebase/auth";
+import { Alert } from "@mui/material";
 
 export default function CreateGroupScreen() {
   const [key, setKey] = useState("")
@@ -18,7 +19,8 @@ export default function CreateGroupScreen() {
   }, [])
   const [groupName, setGroupName] = useState("");
 
-  const [user, setUser] = useState(auth.currentUser)
+  const [user, setUser] = useState(auth.currentUser);
+  const [showAlert, setShowAlert] = useState(false);
 
 
   const copyKey = () => {
@@ -26,7 +28,10 @@ export default function CreateGroupScreen() {
   }
   const createGroup = async () => {
     if (!user) {
-      alert("you must be logged in to create a group");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false)
+      }, 2000)
     } else {
 
       //TODO: Error handling
@@ -61,7 +66,7 @@ export default function CreateGroupScreen() {
           <li className="py-1">Your group members need to join your group with this key</li>
         </ul>
       </div>
-    
+
       <div className="mt-10">
         <input
           type="text"
@@ -90,6 +95,12 @@ export default function CreateGroupScreen() {
           Copy Key
         </button>
       </div>
+      {showAlert
+        ?
+        <Alert severity="info" className="absolute w-1/2  m-auto left-0 right-0 bottom-4">You must be logged in to create a group</ Alert>
+        :
+        null
+      }
     </div>
   )
 
